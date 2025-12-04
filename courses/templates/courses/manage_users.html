@@ -1,0 +1,65 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}Manage Users - Career College{% endblock %}
+
+{% block content %}
+<h2>User Management</h2>
+
+<div style="margin-bottom: 20px;">
+    <p><strong>Total Users:</strong> {{ users.count }}</p>
+</div>
+
+<table style="width: 100%; border-collapse: collapse;">
+    <thead>
+        <tr style="background: #667eea; color: white;">
+            <th style="padding: 10px; text-align: left;">Username</th>
+            <th style="padding: 10px; text-align: left;">Email</th>
+            <th style="padding: 10px; text-align: left;">Current Role</th>
+            <th style="padding: 10px; text-align: center;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user_item in users %}
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px;">{{ user_item.username }}</td>
+            <td style="padding: 10px;">{{ user_item.email }}</td>
+            <td style="padding: 10px;">
+                <span style="background: #e0e7ff; padding: 5px 10px; border-radius: 3px;">
+                    {{ user_item.profile.get_role_display }}
+                </span>
+            </td>
+            <td style="padding: 10px; text-align: center;">
+                <form method="post" action="{% url 'change_role' user_item.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <select name="role" style="padding: 5px; border-radius: 3px; border: 1px solid #ddd;">
+                        {% if user_item.profile.role == "admin" %}
+                        <option value="admin" selected>Admin</option>
+                        {% else %}
+                        <option value="admin">Admin</option>
+                        {% endif %}
+
+                        {% if user_item.profile.role == "advisor" %}
+                        <option value="advisor" selected>Advisor</option>
+                        {% else %}
+                        <option value="advisor">Advisor</option>
+                        {% endif %}
+
+                        {% if user_item.profile.role == "normal" %}
+                        <option value="normal" selected>Normal User</option>
+                        {% else %}
+                        <option value="normal">Normal User</option>
+                        {% endif %}
+                    </select>
+                    <button type="submit"
+                        style="padding: 5px 15px; width: auto; margin: 0; margin-left: 5px;">Update</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="nav-links" style="margin-top: 30px;">
+    <a href="{% url 'home' %}">Back to Home</a>
+</div>
+{% endblock %}
