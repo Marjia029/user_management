@@ -1,0 +1,47 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}Register - Career College{% endblock %}
+
+{% block content %}
+<h2>Create Your Account</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <ul class="errorlist">
+        {% for field in form %}
+        {% for error in field.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="form-group">
+        <label for="id_username">Username:</label>
+        {{ form.username }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_email">Email:</label>
+        {{ form.email }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_password1">Password:</label>
+        {{ form.password1 }}
+    </div>
+
+    <div class="form-group">
+        <label for="id_password2">Confirm Password:</label>
+        {{ form.password2 }}
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+
+<div class="nav-links">
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+</div>
+{% endblock %}

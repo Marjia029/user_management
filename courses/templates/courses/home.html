@@ -1,0 +1,27 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}Home - Career College{% endblock %}
+
+{% block content %}
+<div class="welcome-box">
+    <h1>Welcome to Career College</h1>
+
+    {% if user.is_authenticated %}
+    <div class="user-info">
+        <p><strong>Hello, {{ user.username }}!</strong></p>
+        <p>Role: <span style="color: #667eea; font-weight: bold;">{{ user.profile.get_role_display }}</span></p>
+        <p>You are successfully logged in.</p>
+    </div>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% else %}
+    <p>Your gateway to learning and growth</p>
+    <div class="nav-links">
+        <a href="{% url 'login' %}">Login</a> |
+        <a href="{% url 'register' %}">Register</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

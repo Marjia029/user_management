@@ -1,0 +1,123 @@
+# --------------------------------------------------------------------
+# Python bytecode & cache
+# --------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --------------------------------------------------------------------
+# Virtual environments
+# --------------------------------------------------------------------
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# --------------------------------------------------------------------
+# Django-specific
+# --------------------------------------------------------------------
+
+# Logs
+*.log
+
+# SQLite database (remove if you want it in Git)
+db.sqlite3
+*.sqlite3
+
+# Local settings (keep secrets out of Git)
+local_settings.py
+
+# Collected static files (from `python manage.py collectstatic`)
+# If you store app-level static files in version control, make sure this
+# only matches your STATIC_ROOT directory.
+staticfiles/
+static_root/
+
+# User-uploaded media
+media/
+
+# --------------------------------------------------------------------
+# Environment & secrets
+# --------------------------------------------------------------------
+# Common patterns for env files
+*.env
+.env.*
+*.secret
+*.key
+
+# --------------------------------------------------------------------
+# Testing & coverage
+# --------------------------------------------------------------------
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# --------------------------------------------------------------------
+# Type checkers / linters
+# --------------------------------------------------------------------
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# --------------------------------------------------------------------
+# Packaging / build
+# --------------------------------------------------------------------
+build/
+dist/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --------------------------------------------------------------------
+# IDE / editor files
+# --------------------------------------------------------------------
+# VS Code
+.vscode/
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# Others
+*.swp
+*.swo
+
+# --------------------------------------------------------------------
+# OS-specific
+# --------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
